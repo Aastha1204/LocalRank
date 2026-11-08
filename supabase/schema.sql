@@ -38,3 +38,18 @@ create table if not exists public.audit_leads (
   created_at timestamptz not null default now()
 );
 alter table public.audit_leads enable row level security;
+
+-- CarePlus demo bookings (public booking form -> /careplus/admin).
+create table if not exists public.careplus_bookings (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  phone text not null,
+  service text not null,
+  date date not null,
+  slot text,
+  home boolean not null default false,
+  address text,
+  status text not null default 'new' check (status in ('new','confirmed','done','cancelled')),
+  created_at timestamptz not null default now()
+);
+alter table public.careplus_bookings enable row level security;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BookingForm from "@/components/careplus/BookingForm";
 import { CP, SERVICES, faqLd, localBusinessLd } from "@/lib/careplus";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -36,7 +37,7 @@ export default async function ServicePage({ params }: Props) {
           <p className="rise rise-2 mt-4 max-w-2xl text-lg text-sky-950/75">{s.intro}</p>
           <div className="rise rise-3 mt-6 flex flex-wrap items-center gap-3">
             <span className="rounded-full bg-white px-5 py-2 text-lg font-black text-sky-700 shadow ring-1 ring-sky-100">{s.price}</span>
-            <a href={`https://wa.me/${CP.wa}?text=${encodeURIComponent(`Hi CarePlus, I'd like to book: ${s.h1}`)}`} target="_blank" rel="noopener noreferrer" className="btn btn-wa">Book on WhatsApp</a>
+            <a href="#book" className="btn btn-primary">Book online</a>
             <a href={`tel:${CP.tel}`} className="btn btn-ghost text-sky-900">📞 Call now</a>
           </div>
         </div>
@@ -56,6 +57,9 @@ export default async function ServicePage({ params }: Props) {
             <p className="mt-5 text-sm font-bold text-sky-900">📍 {CP.address}</p>
             <p className="text-sm font-semibold text-sky-900">🕖 {CP.hours}</p>
           </div>
+        </div>
+        <div id="book" className="wrap mt-10 max-w-xl scroll-mt-24">
+          <BookingForm defaultHome={s.slug.startsWith("home")} defaultService={s.slug.startsWith("home") ? "Complete Blood Count (CBC) · ₹250" : ""} />
         </div>
         <div className="wrap mt-10 max-w-4xl">
           <h2 className="text-2xl font-extrabold text-sky-950">Frequently asked questions</h2>

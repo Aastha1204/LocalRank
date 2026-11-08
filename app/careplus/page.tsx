@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BookingForm from "@/components/careplus/BookingForm";
 import { CP, GENERAL_FAQS, SERVICES, TESTS, faqLd, localBusinessLd } from "@/lib/careplus";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function CarePlusHome() {
             <h1 className="rise rise-2 mt-4 text-4xl font-black leading-[1.08] tracking-tight text-sky-950 sm:text-5xl">Trusted pathology lab in <span className="text-sky-600">Dombivli East</span></h1>
             <p className="rise rise-3 mt-4 max-w-lg text-lg text-sky-950/75">{CP.tagline} Walk in, or book a home sample collection across Dombivli and Kalyan.</p>
             <div className="rise rise-3 mt-7 flex flex-col gap-3 sm:flex-row">
-              <a href={`https://wa.me/${CP.wa}?text=${encodeURIComponent("Hi CarePlus, I'd like to book a test.")}`} target="_blank" rel="noopener noreferrer" className="btn btn-wa">Book on WhatsApp</a>
+              <a href="#book" className="btn btn-primary">Book a test online</a>
               <a href={`tel:${CP.tel}`} className="btn btn-ghost text-sky-900">📞 {CP.phone}</a>
             </div>
           </div>
@@ -62,6 +63,19 @@ export default function CarePlusHome() {
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      <section id="book" className="section bg-gradient-to-br from-sky-600 to-emerald-500">
+        <div className="wrap grid items-center gap-10 lg:grid-cols-2">
+          <div className="text-white">
+            <h2 className="h2">Book your test online</h2>
+            <p className="mt-3 max-w-md text-lg text-white/90">Pick a test, a date and a slot. Walk in, or have a phlebotomist come to your home in Dombivli and Kalyan.</p>
+            <ul className="mt-6 space-y-2 font-semibold">
+              {["No prescription needed for most tests", "Reports on WhatsApp in 6 hours", "Open all 7 days"].map((t) => <li key={t}>✓ {t}</li>)}
+            </ul>
+          </div>
+          <BookingForm />
         </div>
       </section>
 
