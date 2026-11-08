@@ -327,7 +327,7 @@ export default function ReviewBoostApp() {
           <p className="rise rise-3 mt-5 max-w-md text-lg text-white/75">ReviewBoost sends a friendly WhatsApp message after every visit with a one-tap link to your Google review box — and shows the owner reviews growing on one screen.</p>
           <div className="rise rise-3 pointer-events-auto mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#try" className="btn btn-primary">Try it on your phone →</a>
-            <a href="#dash" className="btn btn-ghost text-white">See the dashboard</a>
+            <a href="/reviewboost/dashboard" className="btn btn-ghost text-white">Open dashboard prototype</a>
           </div>
           <p className="mt-6 text-xs text-white/40">Tandoor Tales Family Restaurant, Thane West — fictional demo business. Move your mouse: the scene is live 3D.</p>
         </div>
@@ -393,8 +393,8 @@ export default function ReviewBoostApp() {
           <h2 className="h2 mb-6 text-center">Simple pricing</h2>
           <div className="mx-auto grid max-w-3xl gap-5 md:grid-cols-2" style={{ perspective: 1000 }}>
             {[
-              ["Starter", "₹6,999", "₹1,499 / month", ["Quick-send page", "WhatsApp review messages", "Dashboard", "QR standee"]],
-              ["Pro", "₹9,999", "₹2,499 / month", ["Everything in Starter", "Auto triggers from billing / booking", "AI reply drafts", "Monthly review report"]],
+              ["Starter", "₹9,999", "₹3,499 / month", ["Quick-send page", "WhatsApp review messages", "Dashboard", "QR standee", "Hosting, monitoring & bug fixes included", "1 hour of changes per month"]],
+              ["Pro", "₹12,999", "₹3,999 / month", ["Everything in Starter", "Auto triggers from billing / booking", "AI reply drafts", "Monthly review report", "Hosting, monitoring & bug fixes included", "2 hours of changes per month + priority support"]],
             ].map(([n, s, m, f]) => (
               <div key={n as string} className={`rb-card3d rounded-3xl border p-6 ${n === "Pro" ? "border-saffron bg-saffron/10" : "border-white/10 bg-white/5"}`}>
                 <p className="text-sm font-bold uppercase tracking-widest text-white/60">{n as string}</p>
