@@ -5,7 +5,7 @@ export default function CarePlusLayout({ children }: { children: React.ReactNode
   return (
     <div className="bg-white">
       <div className="bg-ink px-4 py-2 text-center text-xs font-semibold text-white print:hidden">
-        LocalRank demo by Neovia AI · <Link href="/audit" className="text-saffron underline">← Back to free audit</Link> · <Link href="/careplus/before-after" className="underline">Before / After</Link> · <Link href="/careplus/monthly-report" className="underline">Monthly report</Link>
+        LocalRank demo by Neovia AI · <Link href="/careplus" className="text-saffron underline">Home</Link> · <Link href="/careplus/before-after" className="underline">Before / After</Link> · <Link href="/careplus/monthly-report" className="underline">Monthly report</Link>
       </div>
       <header className="sticky top-0 z-30 border-b border-sky-100 bg-white/95 backdrop-blur print:hidden">
         <div className="wrap flex items-center justify-between gap-3 px-4 py-3">
