@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CP, TESTS } from "@/lib/careplus";
 
 const SLOTS = ["7-9 AM", "9-11 AM", "11 AM-1 PM", "4-6 PM", "6-8 PM"];
@@ -14,7 +14,13 @@ export default function BookingForm({ defaultService = "", defaultHome = false }
   const [home, setHome] = useState(defaultHome);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [date, setDate] = useState(() => iso(new Date(Date.now() + 86400000)));
+  // dates depend on "now", so set them after mount (keeps the page prerenderable)
+  const [date, setDate] = useState("");
+  const [min, setMin] = useState("");
+  useEffect(() => {
+    const t = setTimeout(() => { setMin(iso(new Date())); setDate(iso(new Date(Date.now() + 86400000))); }, 0);
+    return () => clearTimeout(t);
+  }, []);
   const [slot, setSlot] = useState("");
   const [address, setAddress] = useState("");
   const [err, setErr] = useState("");
@@ -22,7 +28,6 @@ export default function BookingForm({ defaultService = "", defaultHome = false }
   const [done, setDone] = useState<null | { saved: boolean }>(null);
 
   const slots = home ? HOME_SLOTS : SLOTS;
-  const min = iso(new Date());
 
   function summary() {
     return `Hi CarePlus, I booked: ${service} on ${date}${slot ? `, ${slot}` : ""}${home ? ` (home collection: ${address})` : ""}. Name: ${name}.`;
