@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   // Site root shows the CarePlus demo
   async rewrites() {
-    return [{ source: "/", destination: "/careplus" }];
+    return { beforeFiles: [{ source: "/", destination: "/careplus" }] };
   },
   turbopack: {
     rules: {
