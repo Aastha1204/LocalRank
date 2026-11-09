@@ -5,6 +5,10 @@ import { placeholderFields } from "./config/site";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
+  // Site root shows the CarePlus demo
+  async rewrites() {
+    return { beforeFiles: [{ source: "/", destination: "/careplus" }] };
+  },
   turbopack: {
     rules: {
       "*.css": {
